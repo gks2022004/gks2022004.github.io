@@ -15,6 +15,9 @@ export const DATA = {
   skills: [
     "Solidity",
     "Rust",
+    "Ethereum",
+    "Solana",
+    "Anchor",
     "React",
     "Next.js",
     "Typescript",
@@ -58,10 +61,10 @@ export const DATA = {
       
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:imgauravkumar7@gmail.com",
         icon: Icons.email,
 
-        navbar: false,
+        navbar: true,
       },
     },
   },
@@ -77,7 +80,7 @@ export const DATA = {
       start: "Oct 2024",
       end: "Present",
       description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+        "Led end-to-end development of RWA tokenization, DeFi, and exchange infrastructure using production-grade Solidity, Foundry testing, and off-chain relayers. Deployed and operated Uniswap V3 (QxSwap) and built multi-chain ERC-6551 smart accounts with deterministic CREATE2 addresses. Shipped quantum-secure wallets, DeFi + RWA platforms, and automated lending systems across multiple chains. Owned full-stack protocol delivery from smart contracts through backend orchestration to frontend integrations.",
     },
   
   ],
