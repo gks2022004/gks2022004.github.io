@@ -18,6 +18,7 @@ export const DATA = {
     "Ethereum",
     "Solana",
     "Anchor",
+    "Foundry",
     "React",
     "Next.js",
     "Typescript",
@@ -97,7 +98,7 @@ export const DATA = {
   // ],
   projects: [
     {
-      title: "LEAF-SYNC",
+      title: "Leaf-Sync",
       href: "https://github.com/gks2022004/leafsync",
       dates: "",
       active: true,
@@ -118,7 +119,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Q-NOTES",
+      title: "Q-Notes",
       href: "https://github.com/gks2022004/Q-NOTES",
       dates: "",
       active: true,
@@ -140,7 +141,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "RUST AGGREGATOR",
+      title: "Rust Aggregator",
       href: "https://github.com/gks2022004/rust-aggregator",
       dates: "",
       active: true,
@@ -209,7 +210,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "STAKING DAPP",
+      title: "Staking Dapp",
       href: "https://staking-dapp-7.vercel.app/",
       dates: "",
       active: true,
@@ -226,12 +227,17 @@ export const DATA = {
           href: "https://staking-dapp-7.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "Source",
+          href: "https://github.com/gks2022004/Staking_dapp/",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
       image: "",
       video: "",
     },
     {
-      title: "NFT-MARKETPLACE",
+      title: "NFT-Marketplace",
       href: "https://nft-becho.vercel.app/",
       dates: "",
       active: true,
