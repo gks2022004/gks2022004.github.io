@@ -81,7 +81,7 @@ export const DATA = {
       start: "Oct 2024",
       end: "Present",
       description:
-        "Led end-to-end development of RWA tokenization, DeFi, and exchange infrastructure using production-grade Solidity, Foundry testing, and off-chain relayers. Deployed and operated Uniswap V3 (QxSwap) and built multi-chain ERC-6551 smart accounts with deterministic CREATE2 addresses. Shipped quantum-secure wallets, DeFi + RWA platforms, and automated lending systems across multiple chains. Owned full-stack protocol delivery from smart contracts through backend orchestration to frontend integrations.",
+        "Led end-to-end development of RWA tokenization, DeFi, and exchange infrastructure on the Quranium blockchain, using production grade Solidity, Foundry testing, and off-chain relayers. Deployed and operated Uniswap V3 (QxSwap) on Quranium and built multi-chain ERC-6551 smart accounts with deterministic CREATE2 addresses. Shipped quantum-secure wallets, DeFi + RWA platforms, and automated lending systems running in live environments. Owned full-stack protocol delivery on Quranium from smart contracts through backend orchestration to frontend integrations.",
     },
   
   ],
