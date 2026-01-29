@@ -8,9 +8,9 @@ export const DATA = {
   location: "Prayagraj, India",
   locationLink: "https://www.google.com/maps/place/prayagraj",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
+    "I like simple ideas and complex systems. Rust, crypto, and the pursuit of things that actually work.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "I’m a curious mind with a keyboard, trying to out smart complexity one line of code at a time. I turn wild ideas into things that actually work (after a healthy amount of debugging and coffee). If it feels impossible, impractical, or slightly insane that’s usually my kind of problem. 🚀 ",
   avatarUrl: "/me.jpg",
   skills: [
     "Solidity",
@@ -72,8 +72,8 @@ export const DATA = {
       href: "https://www.quranium.org/",
       badges: [],
       location: "Remote",
-      title: "Blockchain developer/DeFi Engineer",
-      logoUrl: "/atomic.png",
+      title: "Blockchain developer",
+      logoUrl: "/quranium.jpeg",
       start: "Oct 2024",
       end: "Present",
       description:
@@ -81,40 +81,17 @@ export const DATA = {
     },
   
   ],
-  education: [
-    {
-      school: "Buildspace",
-      href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
-    },
-    {
-      school: "University of Waterloo",
-      href: "https://uwaterloo.ca",
-      degree: "Bachelor's Degree of Computer Science (BCS)",
-      logoUrl: "/waterloo.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "Wilfrid Laurier University",
-      href: "https://wlu.ca",
-      degree: "Bachelor's Degree of Business Administration (BBA)",
-      logoUrl: "/laurier.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "International Baccalaureate",
-      href: "https://ibo.org",
-      degree: "IB Diploma",
-      logoUrl: "/ib.png",
-      start: "2012",
-      end: "2016",
-    },
-  ],
+  // education: [
+  //   {
+  //     school: "Buildspace",
+  //     href: "https://buildspace.so",
+  //     degree: "s3, s4, sf1, s5",
+  //     logoUrl: "/buildspace.jpg",
+  //     start: "2023",
+  //     end: "2024",
+  //   },
+  //  
+  // ],
   projects: [
     {
       title: "LEAF-SYNC",
