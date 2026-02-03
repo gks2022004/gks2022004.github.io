@@ -97,6 +97,35 @@ export const DATA = {
   //  
   // ],
   projects: [
+       {
+      title: "Dark-bridge",
+      href: "https://github.com/gks2022004/dark-bridge",
+      dates: "",
+      active: true,
+      description:
+        "It's is a privacy-preserving cross-chain bridge that enables confidential token transfers between Base and Solana using Inco Network's TEE technology to keep transaction amounts, balances, and participant identities hidden on-chain.",
+      technologies: [
+        "Solana",
+        "Soldity",
+        "Rust",
+        "Typescript",
+        "Inco-TEE"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://darkk-bridge.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/gks2022004/dark-bridge",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
     {
       title: "Leaf-Sync",
       href: "https://github.com/gks2022004/leafsync",
