@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "I like simple ideas and complex systems. Rust, crypto, and the pursuit of things that actually work.",
   summary:
-    "I’m a curious mind with a keyboard, trying to out smart complexity one line of code at a time. I turn wild ideas into things that actually work (after a healthy amount of debugging and coffee). If it feels impossible, impractical, or slightly insane that’s usually my kind of problem. 🚀 ",
+    "I’m a curious mind with a keyboard, trying to out smart complexity one line of code at a time. I turn wild ideas into things that actually work (after a healthy amount of debugging and coffee). If it feels impossible, impractical, or slightly insane that’s usually my kind of problem. ",
   avatarUrl: "/me.jpg",
   skills: [
     "Solidity",
