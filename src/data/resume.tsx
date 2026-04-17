@@ -74,11 +74,11 @@ export const DATA = {
 
     {
       company: "PulsarX",
-      href: "https://terminal.pulsarx.io/",
+      href: "https://www.pulsarx.io/",
       badges: [],
       location: "Remote",
       title: "Blockchain developer-Infrastructure",
-      logoUrl: "/pulsarx.jpeg",
+      logoUrl: "/pulsarx-x.svg",
       start: "March 2026",
       end: "Present",
       description:
