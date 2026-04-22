@@ -77,7 +77,7 @@ export const DATA = {
       href: "https://www.pulsarx.io/",
       badges: [],
       location: "Remote",
-      title: "Blockchain developer-Infrastructure",
+      title: "Blockchain and Infrastructure Developer",
       logoUrl: "/pulsarx-x.svg",
       start: "March 2026",
       end: "Present",

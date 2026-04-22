@@ -1,4 +1,4 @@
-import FallingLettersBackground from "@/components/falling-letters-background";
+import DotsBackground from "@/components/dots-background";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -81,7 +81,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            <FallingLettersBackground />
+            <DotsBackground />
             <div className="relative z-10">
               {children}
               <Navbar />
