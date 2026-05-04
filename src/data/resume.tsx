@@ -82,7 +82,7 @@ export const DATA = {
       start: "March 2026",
       end: "Present",
       description:
-        "Fixing and building core protocol and infrastructure for PulsarX (more updates soon)",
+        "Joined a Crypto Hedge Fund, where we’re building an onchain fund management terminal for institutional traders enabling them to manage partner capital using non-custodial infrastructure.",
     },
     {
       company: "Quranium",
@@ -308,6 +308,39 @@ export const DATA = {
     },
   ],
   hackathons: [
+  {
+      title: "The Pacifica Hackathon",
+      dates: "March 16th - April 16th, 2026",
+      location: "Online",
+      description:
+        "Built perennia.xyz (Everlasting Perpetual Options protocol on top of pacifica.fi)",
+      image:
+        "https://pbs.twimg.com/media/HCAupIKaMAIbLTs?format=jpg&name=large",
+        win: "🏆 Most Innovative Build ($1000)",
+      mlh: "https://x.com/i_amgauravkumar/status/2018607208125300868?s=20",
+      links: [
+         {
+          title: "Github",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/Aditya-dom/Perennia",
+        },
+        {
+          title: "perennia.xyz",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://perennia.xyz",
+        },
+        {
+          title: "demo",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://www.linkedin.com/feed/update/urn:li:activity:7454807959336927233/",
+        },
+         {
+          title: "results",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://x.com/pacifica_fi/status/2047658968944988208",
+        },
+      ],
+    },
     {
       title: "Solana Privacy Hackathon",
       dates: "January 12th - February 1st, 2026",

@@ -104,6 +104,31 @@ export default function Page() {
             </div>
           </div>
       </section>
+      <section id="hackathons">
+          <div className="flex min-h-0 flex-col gap-y-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+              <h2 className="text-xl font-bold">Hackathons</h2>
+            </BlurFade>
+            <ul className="ml-4 divide-y divide-dashed border-l">
+              {DATA.hackathons.map((hackathon, id) => (
+                <BlurFade
+                  key={`${hackathon.title}-${hackathon.dates}-${id}`}
+                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
+                >
+                  <HackathonCard
+                    title={hackathon.title}
+                    description={hackathon.description}
+                    dates={hackathon.dates}
+                    location={hackathon.location}
+                    win={"win" in hackathon ? hackathon.win : undefined}
+                    image={hackathon.image}
+                    links={hackathon.links}
+                  />
+                </BlurFade>
+              ))}
+            </ul>
+          </div>
+      </section>
       <section id="projects">
           <div className="space-y-12 w-full py-12">
             <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -144,31 +169,6 @@ export default function Page() {
                 </BlurFade>
               ))}
             </div>
-          </div>
-      </section>
-      <section id="hackathons">
-          <div className="flex min-h-0 flex-col gap-y-3">
-            <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <h2 className="text-xl font-bold">Hackathons</h2>
-            </BlurFade>
-            <ul className="ml-4 divide-y divide-dashed border-l">
-              {DATA.hackathons.map((hackathon, id) => (
-                <BlurFade
-                  key={`${hackathon.title}-${hackathon.dates}-${id}`}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={hackathon.title}
-                    description={hackathon.description}
-                    dates={hackathon.dates}
-                    location={hackathon.location}
-                    win={"win" in hackathon ? hackathon.win : undefined}
-                    image={hackathon.image}
-                    links={hackathon.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
           </div>
       </section>
       <section id="contact">
