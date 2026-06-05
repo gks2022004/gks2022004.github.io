@@ -330,7 +330,13 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 /* ===== Death Note / Berserk ink background ===== */
 .ink-bg {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* stable height so the centered mark doesn't drift when the mobile
+     address bar shows/hides (100lvh = largest viewport, constant) */
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
