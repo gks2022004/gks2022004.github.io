@@ -26,7 +26,7 @@ export function HackathonCard({
   links,
 }: Props) {
   return (
-    <li className="relative ml-10 py-4">
+    <li className="group relative ml-10 -mr-3 rounded-lg py-4 pr-3 transition-colors duration-300 ease-out hover:bg-foreground/[0.03]">
       <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
         <Avatar className="border size-12 m-auto">
           <AvatarImage src={image} alt={title} className="object-contain" />
@@ -37,7 +37,9 @@ export function HackathonCard({
         {dates && (
           <time className="text-xs text-muted-foreground">{dates}</time>
         )}
-        <h2 className="font-semibold leading-none">{title}</h2>
+        <h2 className="font-semibold leading-none transition-colors duration-300 group-hover:text-[hsl(353_75%_50%)] dark:group-hover:text-[hsl(353_80%_62%)]">
+          {title}
+        </h2>
         {location && (
           <p className="text-sm text-muted-foreground">{location}</p>
         )}

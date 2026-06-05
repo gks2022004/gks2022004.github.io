@@ -1,11 +1,12 @@
 import DotsBackground from "@/components/dots-background";
 import Navbar from "@/components/navbar";
+import ScrollProgress from "@/components/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Newsreader } from "next/font/google";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -13,23 +14,25 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const fontSerif = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   icons: {
     icon: [
-      {
-        url: "/favicon_io/android-chrome-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
+      { url: "/brand/mark-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/brand/mark-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/mark-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/mark-512.png", sizes: "512x512", type: "image/png" },
     ],
-    shortcut: ["/favicon_io/android-chrome-512x512.png"],
+    shortcut: ["/brand/mark-512.png"],
     apple: [
-      {
-        url: "/favicon_io/apple-touch-icon.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
+      { url: "/brand/mark-180.png", sizes: "180x180", type: "image/png" },
     ],
   },
   title: {
@@ -76,12 +79,14 @@ export default function RootLayout({
       <body
         className={cn(
           "relative min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
+          fontSans.variable,
+          fontSerif.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
             <DotsBackground />
+            <ScrollProgress />
             <div className="relative z-10">
               {children}
               <Navbar />

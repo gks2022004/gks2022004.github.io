@@ -31,18 +31,21 @@ export default function Page() {
               <div className="flex-col flex flex-1 space-y-1.5">
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                  className="font-serif text-4xl tracking-tight sm:text-6xl xl:text-7xl/none cursor-default transition-all duration-500 hover:[text-shadow:0_0_28px_rgba(196,18,30,0.55)]"
                   yOffset={8}
                   text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
                 />
-                <BlurFadeText
-                  className="max-w-[600px] md:text-xl"
-                  delay={BLUR_FADE_DELAY}
-                  text={DATA.description}
-                />
+                <BlurFade delay={BLUR_FADE_DELAY} className="max-w-[600px]">
+                  <p className="md:text-xl text-muted-foreground">
+                    {DATA.description.split(". ")[0]}.{" "}
+                    <span className="font-serif text-foreground">
+                      {DATA.description.split(". ").slice(1).join(". ")}
+                    </span>
+                  </p>
+                </BlurFade>
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <Avatar className="size-28 border overflow-hidden">
+                <Avatar className="size-28 border overflow-hidden transition-all duration-500 hover:border-[hsl(353_70%_45%)] hover:shadow-[0_0_34px_rgba(196,18,30,0.55)]">
                   <AvatarImage
                     alt={DATA.name}
                     src={DATA.avatarUrl}
@@ -56,7 +59,7 @@ export default function Page() {
       </section>
       <section id="about">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+            <h2 className="font-serif text-2xl tracking-tight">About</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -67,7 +70,7 @@ export default function Page() {
       <section id="work">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
-              <h2 className="text-xl font-bold">Work Experience</h2>
+              <h2 className="font-serif text-2xl tracking-tight">Work Experience</h2>
             </BlurFade>
             {DATA.work.map((work, id) => (
               <BlurFade
@@ -93,12 +96,23 @@ export default function Page() {
       <section id="skills">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 9}>
-              <h2 className="text-xl font-bold">Skills</h2>
+              <h2 className="font-serif text-2xl tracking-tight">Skills</h2>
             </BlurFade>
             <div className="flex flex-wrap gap-1">
               {DATA.skills.map((skill, id) => (
-                <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                  <Badge key={skill}>{skill}</Badge>
+                <BlurFade
+                  key={skill}
+                  delay={BLUR_FADE_DELAY * 4 + id * 0.06}
+                  inView
+                  yOffset={14}
+                  blur="8px"
+                >
+                  <Badge
+                    key={skill}
+                    className="transition-colors duration-300 hover:bg-[hsl(353_70%_45%)] hover:text-white"
+                  >
+                    {skill}
+                  </Badge>
                 </BlurFade>
               ))}
             </div>
@@ -107,7 +121,7 @@ export default function Page() {
       <section id="hackathons">
           <div className="flex min-h-0 flex-col gap-y-3">
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <h2 className="text-xl font-bold">Hackathons</h2>
+              <h2 className="font-serif text-2xl tracking-tight">Hackathons</h2>
             </BlurFade>
             <ul className="ml-4 divide-y divide-dashed border-l">
               {DATA.hackathons.map((hackathon, id) => (
@@ -137,7 +151,7 @@ export default function Page() {
                   <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                     My Projects
                   </div>
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  <h2 className="font-serif text-4xl tracking-tight sm:text-6xl">
                     Check out my latest work
                   </h2>
                   <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -178,14 +192,14 @@ export default function Page() {
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Contact
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="font-serif text-4xl tracking-tight sm:text-6xl">
                   Get in Touch
                 </h2>
                 <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Want to chat? Just shoot me a dm{" "}
                   <Link
                     href={DATA.contact.social.X.url}
-                    className="text-blue-500 hover:underline"
+                    className="link-accent font-medium"
                   >
                     with a direct question on twitter
                   </Link>{" "}
