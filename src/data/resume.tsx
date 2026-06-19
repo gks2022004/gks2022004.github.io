@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "I like simple ideas and complex systems. Rust, crypto, and the pursuit of things that actually work.",
   summary:
-    "I’m a curious mind with a keyboard, trying to out smart complexity one line of code at a time. I turn wild ideas into things that actually work (after a healthy amount of debugging and coffee). If it feels impossible, impractical, or slightly insane that’s usually my kind of problem. ",
+    "I'm a curious mind with a keyboard, trying to out smart complexity one line of code at a time. I turn wild ideas into things that actually work (after a healthy amount of debugging and coffee). If it feels impossible, impractical, or slightly insane that's usually my kind of problem. ",
   avatarUrl: "/me.jpg",
   skills: [
     "Solidity",
@@ -82,7 +82,7 @@ export const DATA = {
       start: "March 2026",
       end: "Present",
       description:
-        "Joined a Crypto Hedge Fund, where we’re building an onchain fund management terminal for institutional traders enabling them to manage partner capital using non-custodial infrastructure.",
+        "Joined a Crypto Hedge Fund, where we're building an onchain fund management terminal for institutional traders enabling them to manage partner capital using non-custodial infrastructure.",
     },
     {
       company: "Quranium",
@@ -98,17 +98,32 @@ export const DATA = {
     },
   
   ],
-  // education: [
-  //   {
-  //     school: "Buildspace",
-  //     href: "https://buildspace.so",
-  //     degree: "s3, s4, sf1, s5",
-  //     logoUrl: "/buildspace.jpg",
-  //     start: "2023",
-  //     end: "2024",
-  //   },
-  //  
-  // ],
+  openSource: [
+    {
+      org: "Dodo Payments",
+      orgUrl: "https://github.com/dodopayments",
+      logoUrl: "https://avatars.githubusercontent.com/dodopayments",
+      repo: "dodopayments/billingsdk",
+      repoUrl: "https://github.com/dodopayments/billingsdk",
+      pr: "fix(payment-card): accept cards through last day of expiry month",
+      prUrl: "https://github.com/dodopayments/billingsdk/pull/377",
+      date: "Jun 2026",
+      description:
+        "Fixed a bug where payment cards were incorrectly rejected during their entire final valid month. Patched expiry validation in both payment-card and payment-details-two components to compare against the first day of the following month, aligning with card-industry convention. Both shadcn registry JSONs regenerated.",
+    },
+    {
+      org: "Ethereum Foundation",
+      orgUrl: "https://github.com/ethereum",
+      logoUrl: "https://avatars.githubusercontent.com/ethereum",
+      repo: "ethereum/ethereum-org-website",
+      repoUrl: "https://github.com/ethereum/ethereum-org-website",
+      pr: "fix: Remove date from whitepaper page",
+      prUrl: "https://github.com/ethereum/ethereum-org-website/pull/13710",
+      date: "Sep 2024",
+      description:
+        "Modified the Static Layout component on ethereum.org to conditionally hide the 'Page last updated' timestamp on the /whitepaper route, fixing a UX issue where an auto-updating date was misleadingly displayed on a historically fixed document.",
+    },
+  ],
   projects: [
        {
       title: "Dark-bridge",
