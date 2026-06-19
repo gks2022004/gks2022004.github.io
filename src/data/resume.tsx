@@ -102,7 +102,7 @@ export const DATA = {
     {
       org: "Dodo Payments",
       orgUrl: "https://github.com/dodopayments",
-      logoUrl: "https://avatars.githubusercontent.com/dodopayments",
+      logoUrl: "https://avatars.githubusercontent.com/u/168640166?v=4",
       repo: "dodopayments/billingsdk",
       repoUrl: "https://github.com/dodopayments/billingsdk",
       pr: "fix(payment-card): accept cards through last day of expiry month",
@@ -114,7 +114,7 @@ export const DATA = {
     {
       org: "Ethereum Foundation",
       orgUrl: "https://github.com/ethereum",
-      logoUrl: "https://avatars.githubusercontent.com/ethereum",
+      logoUrl: "https://avatars.githubusercontent.com/u/6250754?v=4",
       repo: "ethereum/ethereum-org-website",
       repoUrl: "https://github.com/ethereum/ethereum-org-website",
       pr: "fix: Remove date from whitepaper page",
