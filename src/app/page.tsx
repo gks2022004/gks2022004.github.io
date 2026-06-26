@@ -1,6 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { HackathonCard } from "@/components/hackathon-card";
+import LiveClock from "@/components/live-clock";
 import { OpenSourceCard } from "@/components/open-source-card";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
@@ -32,6 +33,9 @@ export default function Page() {
                     {DATA.description.split(". ").slice(1).join(". ")}
                   </span>
                 </p>
+              </BlurFade>
+              <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                <LiveClock />
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>

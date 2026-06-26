@@ -121,6 +121,17 @@
   h3 code {
     @apply !text-lg md:!text-xl;
   }
+
+  /* kill the literal backticks Tailwind Typography wraps inline code in,
+     and give inline code a subtle pill instead */
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: "" !important;
+  }
+  .prose :not(pre) > code {
+    @apply rounded bg-foreground/10 px-1.5 py-0.5 font-medium;
+    font-weight: 500;
+  }
   
   pre {
     @apply !px-0 rounded-lg overflow-x-auto py-4
@@ -405,8 +416,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 /* light mode: black brand on the manga page */
 .berserk-mark__img--light {
-  opacity: 0.16;
-  mix-blend-mode: multiply;
+  opacity: 0.12;
   display: block;
 }
 .berserk-mark__img--dark {
@@ -456,10 +466,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .dark .ink-bg__hatch {
-  background-image:
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 9px),
-    repeating-linear-gradient(8deg, rgba(196, 18, 30, 0.05) 0 1px, transparent 1px 14px);
+  background-image: none;
 }
 
 /* vignette: soft on paper, heavy black crush at night */

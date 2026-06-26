@@ -1,0 +1,191 @@
+---
+title: "I Built a Whole QUIC Simulator and All I Got Was This Lovely \"No\""
+publishedAt: "2026-06-26"
+summary: "The time I read a four-bullet GitHub issue and ended up writing a distributed-systems prototype at 1 AM, fully convinced I was about to become a Firedancer contributor."
+---
+
+Let me tell you about the time I read a four-bullet GitHub issue and somehow ended up
+writing a distributed-systems prototype at 1 AM, fully convinced I was about to become
+a Firedancer contributor.
+
+Spoiler: I did not become a Firedancer contributor.
+
+But I *did* get a really good story, a working simulator, and a brief, character-building
+encounter with the word "Sorry."
+
+## How It Started (Innocently)
+
+Firedancer issue `#10307`: **votor QUIC support**.
+
+Short issue. Dangerous issue. The kind of issue that looks like a snack and turns out to
+be a five-course meal with a wine pairing you didn't order.
+
+The bullets read like a polite list of reasons your weekend is now gone:
+
+- Alpenglow Votor needs all-to-all communication over QUIC. (Cool, cool.)
+- Firedancer needs scalable QUIC client support. (Sure, scalable, my favorite word.)
+- It needs scalable outgoing uni-stream support. (Now we're just adding adjectives.)
+- It might need stream fragment reassembly because Agave doesn't guarantee votes arrive
+  unfragmented. (Ah. There it is. The trap.)
+- QUIC datagrams would've made this easy, but they're not available for launch. (Of course
+  they aren't. That would be *nice*.)
+
+I read this and thought, with the unearned confidence of a person who has not yet suffered:
+"I should model this."
+
+## The Part Where I Convince Myself This Is Reasonable
+
+Here's the thing about QUIC streams. Datagrams are message-shaped — you send a thing, it
+arrives as a thing. Lovely. Civilized.
+
+Streams are *byte* soup. Reliable, ordered byte soup, but soup. Your beautiful consensus
+vote can show up as "bytes 0–40, then bytes 90–120, then the middle part, eventually, maybe,
+in an order chosen by a malicious goblin." And consensus code does *not* want soup. It wants
+the whole vote, intact, before it does anything important.
+
+So somebody has to stand at the door, catch all the soup, and reassemble it back into a
+sandwich.
+
+I decided that somebody was going to be me. In Rust. On a Tuesday.
+
+## The Simulator (a.k.a. My Beautiful Lab Goblin)
+
+I built a little standalone thing with `tokio` and `quinn`:
+
+https://github.com/gks2022004/quic-votor-simulator
+
+Not because Firedancer should use Rust — it absolutely should not, it's a C codebase and I
+respect that — but because Rust let me build the state machine fast and the borrow checker
+kept me honest about the parts I was tempted to lie about.
+
+It does three things, and I'm a little proud of all of them.
+
+### 1. Uni-Stream Fanout (controlled chaos)
+
+The client splits each vote into fragments and fires each fragment down its own QUIC
+uni-stream. And — this is my favorite part — it sends them **in reverse order on purpose**,
+because if my reassembler can't survive me actively bullying it, it can't survive the real
+network either.
+
+```text
+[MUXER] sending vote 3 attempt 1 as 4 uni-stream fragments
+[SERVER] vote 3 fragment 4/4 on attempt 1
+[SERVER] vote 3 fragment 3/4 on attempt 1
+[SERVER] vote 3 fragment 2/4 on attempt 1
+[SERVER] vote 3 fragment 1/4 on attempt 1
+```
+
+Backwards. Like a little villain.
+
+### 2. Fragment Reassembly (catching the soup)
+
+Server side: a map from vote id to a fragment buffer, chunks slotted in by index, and once
+`0..total` are all present it flattens the whole thing back into the original payload.
+
+```text
+[SERVER] reassembled vote 3: VOTE_3_ACCEPT_BLOCK_C_PTO_DEMO
+```
+
+That line gave me a genuinely embarrassing amount of joy. The goblin sandwich was whole again.
+
+In the real Firedancer world the key would be more like `(connection, stream_id)`, and the
+production version would have to be bounded, allocator-aware, and deeply paranoid about
+duplicates, overlaps, max message size, stream resets, and cleanup. My version is paranoid
+about roughly half of those, which is a polite way of saying it's a prototype.
+
+### 3. PTO-Like Retry (where I drop a packet on purpose and then act surprised)
+
+The client waits for an app-level ACK. And for the demo, I rigged vote 3 so the server
+*intentionally* eats the first ACK:
+
+```text
+[SERVER] intentionally dropping first ACK for vote 3
+```
+
+Sabotaging my own program is, I've decided, an underrated form of testing. The client times
+out, shrugs, and retransmits on fresh streams:
+
+```text
+[PTO] vote 3 expired; scheduling attempt 2
+[MUXER] sending vote 3 attempt 2 as 4 uni-stream fragments
+...
+[SERVER] ACK sent for vote 3
+[CLIENT] ACK received for vote 3
+[CLIENT] all votes ACKed
+```
+
+It worked. I felt like a genius.
+
+(Reality check, delivered later, by myself, to myself: real QUIC *already* has loss recovery
+and PTO. Re-implementing it on top is how you end up with two retransmission systems fighting
+in a parking lot. The real concern is backpressure and stream-creation failure, not
+reinventing the transport. But for a mental model? Chef's kiss.)
+
+## Then I Actually Read the Firedancer Code
+
+Plot twist: the hard part was already done. Firedancer has a full C QUIC stack in
+`src/waltz/quic`, and the APIs are *right there*:
+
+```c
+fd_quic_conn_new_stream( fd_quic_conn_t * conn );
+fd_quic_stream_send( fd_quic_stream_t * stream, void const * data, ulong data_sz, int fin );
+```
+
+And the receive callback hands you exactly what a reassembly layer dreams about — `stream_id`,
+`offset`, `data`, `data_sz`, `fin`. It was like showing up to build a house and finding the
+foundation, plumbing, and most of the walls already there.
+
+So the real first contribution wasn't "write QUIC." It was a bounded reassembly + send-path
+layer on top, with tests for all the hostile cases: out-of-order chunks, duplicates,
+overlaps, `FIN`-before-complete, max-size rejection. A nice, reviewable little slice.
+
+I wrote all this up. Simulator, analysis, proposed C path. Hit comment. Leaned back. Cracked
+the knuckles. Prepared for glory.
+
+## The "No" Heard Round My Apartment
+
+```text
+Sorry, we are not accepting external contributions for this component at the
+moment. Thanks for understanding.
+```
+
+Reader, I was *crushed* for approximately five seconds.
+
+Then the adult part of my brain rebooted. Of course they said no. Votor transport is
+consensus-adjacent, launch-sensitive code. A random internet person showing up with a Rust
+prototype and a plan — even a *good* plan — is not what you want touching the thing that
+decides what's real on a blockchain at launch. Maintainers have to protect review bandwidth,
+architectural consistency, and the security blast radius. "No" there is just good engineering
+management wearing a polite hat.
+
+And crucially, the answer wasn't "you're wrong" or "you don't get it." It was "not here, not
+now." That's a boundary, not a grade. The boundary is *information*.
+
+## What I Actually Walked Away With
+
+Technically: QUIC streams shove all the complexity to the application boundary. If you can't
+have datagrams and your app still thinks in messages, you owe the universe a careful bridge
+between byte-stream delivery and message-level logic — bounded memory, stream identity,
+offset-aware inserts, dup/overlap handling, `FIN`-based sizing, cleanup, and tests written by
+someone who clearly has trust issues.
+
+Personally: not every rabbit hole has a merged PR at the bottom. Sometimes the prize is that
+you turned a four-bullet issue into a working mental model, learned where the real integration
+point lives, and got to feel the specific 1 AM joy of watching a backwards-shuffled vote
+reassemble itself.
+
+I'd do it again. I will *probably* do it again. The next issue also looks like a snack.
+
+## Final Thought
+
+The maintainer said no.
+
+![The maintainer's reply: "Sorry, we are not accepting external contributions for this component at the moment. Thanks for understanding."](/reply.png)
+
+That's fine. The repo's a little more understood, the simulator runs, and I now know — in my
+bones — that "just send the bytes" is never the whole problem.
+
+Also I learned to stop reading short GitHub issues at 1 AM. (I will not stop reading short
+GitHub issues at 1 AM.)
+</content>
+</invoke>
