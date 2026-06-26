@@ -1,3 +1,4 @@
+import GiscusComments from "@/components/giscus-comments";
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
@@ -102,6 +103,7 @@ export default async function Blog({
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
+      <GiscusComments />
     </section>
   );
 }
