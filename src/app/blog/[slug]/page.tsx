@@ -1,4 +1,5 @@
 import GiscusComments from "@/components/giscus-comments";
+import ViewCounter from "@/components/view-counter";
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
@@ -98,6 +99,9 @@ export default async function Blog({
             {formatDate(post.metadata.publishedAt)}
           </p>
         </Suspense>
+        <span className="text-sm text-neutral-600 dark:text-neutral-400">
+          <ViewCounter slug={`blog-${post.slug}`} />
+        </span>
       </div>
       <article
         className="prose dark:prose-invert"

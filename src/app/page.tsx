@@ -2,6 +2,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { HackathonCard } from "@/components/hackathon-card";
 import LiveClock from "@/components/live-clock";
+import ViewCounter from "@/components/view-counter";
 import { OpenSourceCard } from "@/components/open-source-card";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
@@ -239,6 +240,10 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
+      <footer className="flex justify-center pb-16 pt-4 text-xs text-muted-foreground">
+        <ViewCounter slug="home" />
+      </footer>
     </main>
   );
 }
