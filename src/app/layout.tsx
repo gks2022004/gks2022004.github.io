@@ -19,6 +19,9 @@ const fontSerif = Newsreader({
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+  fallback: ["Georgia", "Cambria", "Times New Roman", "serif"],
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
