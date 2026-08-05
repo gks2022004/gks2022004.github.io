@@ -73,12 +73,12 @@ export const DATA = {
   work: [
 
     {
-      company: "PulsarX",
-      href: "https://www.pulsarx.io/",
+      company: "Stealth Mode",
+      href: "",
       badges: [],
       location: "Remote",
       title: "Blockchain and Infrastructure Developer",
-      logoUrl: "/pulsarx-x.svg",
+      logoUrl: "",
       start: "March 2026",
       end: "Present",
       description:
