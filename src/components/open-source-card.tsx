@@ -35,7 +35,7 @@ export const OpenSourceCard = ({
 
   return (
     <Card
-      className="group/card flex gap-4 bg-transparent shadow-none rounded-none border-0 border-l-2 border-l-transparent pl-3 pr-1 py-3 transition-all duration-300 ease-out hover:border-l-[hsl(353_70%_45%)] hover:pl-4 hover:bg-foreground/[0.03] cursor-pointer"
+      className="group/card flex gap-4 bg-transparent shadow-none rounded-none border-0 border-l-2 border-l-transparent pl-3 pr-1 py-3 transition-all duration-300 ease-out hover:border-l-[hsl(199_89%_45%)] hover:pl-4 hover:bg-foreground/[0.03] cursor-pointer"
       onClick={() => description && setIsExpanded(!isExpanded)}
     >
       {/* Org avatar */}
@@ -60,7 +60,7 @@ export const OpenSourceCard = ({
             href={orgUrl}
             target="_blank"
             onClick={(e) => e.stopPropagation()}
-            className="font-medium text-foreground hover:text-[hsl(353_70%_45%)] transition-colors"
+            className="font-medium text-foreground hover:text-[hsl(199_89%_45%)] transition-colors"
           >
             {org}
           </Link>
@@ -77,7 +77,7 @@ export const OpenSourceCard = ({
 
         {/* PR title + badges row */}
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-sm font-semibold leading-snug transition-colors duration-300 group-hover/card:text-[hsl(353_70%_45%)]">
+          <h3 className="text-sm font-semibold leading-snug transition-colors duration-300 group-hover/card:text-[hsl(199_89%_45%)]">
             {pr}
           </h3>
           <div className="flex items-center gap-1.5 shrink-0 mt-0.5">

@@ -37,7 +37,7 @@ export function HackathonCard({
         {dates && (
           <time className="text-xs text-muted-foreground">{dates}</time>
         )}
-        <h2 className="font-semibold leading-none transition-colors duration-300 group-hover:text-[hsl(353_75%_50%)] dark:group-hover:text-[hsl(353_80%_62%)]">
+        <h2 className="font-semibold leading-none transition-colors duration-300 group-hover:text-[hsl(199_89%_40%)] dark:group-hover:text-[hsl(199_92%_62%)]">
           {title}
         </h2>
         {location && (

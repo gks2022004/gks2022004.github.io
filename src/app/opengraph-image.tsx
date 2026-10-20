@@ -23,7 +23,7 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           padding: "0 90px",
           background:
-            "radial-gradient(120% 90% at 50% -10%, #2a0a0d 0%, transparent 55%), linear-gradient(180deg, #050506 0%, #0b0b0d 100%)",
+            "radial-gradient(120% 90% at 50% -10%, #0c4a6e 0%, transparent 55%), linear-gradient(180deg, #072a45 0%, #020f1f 100%)",
           color: "#f5f3ee",
         }}
       >
@@ -33,7 +33,7 @@ export default function OpengraphImage() {
               fontSize: 22,
               letterSpacing: 6,
               textTransform: "uppercase",
-              color: "#e23545",
+              color: "#38bdf8",
               fontWeight: 700,
             }}
           >
@@ -66,7 +66,7 @@ export default function OpengraphImage() {
           height={300}
           alt=""
           style={{
-            filter: "drop-shadow(0 0 40px rgba(196,18,30,0.55))",
+            filter: "drop-shadow(0 0 40px rgba(56,189,248,0.55))",
           }}
         />
       </div>

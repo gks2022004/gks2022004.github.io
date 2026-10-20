@@ -75,9 +75,9 @@
     }
   }
 
-  /* crimson accent — selection, links, scrollbar */
+  /* ocean accent — selection, links, scrollbar */
   ::selection {
-    background: rgba(196, 18, 30, 0.85);
+    background: rgba(14, 165, 233, 0.85);
     color: #fff;
   }
 
@@ -114,7 +114,7 @@
     background-clip: padding-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(196, 18, 30, 0.6);
+    background: rgba(14, 165, 233, 0.6);
     background-clip: padding-box;
   }
 
@@ -358,25 +358,25 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .dark .ink-bg {
-  /* deep, near-black base with a cold-to-warm vertical bleed */
+  /* deep ocean: lit teal near the surface, sinking into abyssal navy */
   background:
-    radial-gradient(120% 80% at 50% -10%, #1a0608 0%, transparent 55%),
-    linear-gradient(180deg, #050506 0%, #0a0a0c 45%, #060507 100%);
+    radial-gradient(120% 80% at 50% -10%, #0c4a6e 0%, transparent 60%),
+    linear-gradient(180deg, #072a45 0%, #041d33 45%, #020f1f 100%);
 }
 
-/* glow: soft paper warmth in light, crimson "blood moon" in dark */
+/* glow: faint sea tint on paper, sunlight filtering down from the surface at night */
 .ink-bg__glow {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60% 45% at 50% 0%, rgba(150, 30, 30, 0.08) 0%, transparent 65%);
+    radial-gradient(60% 45% at 50% 0%, rgba(14, 116, 168, 0.08) 0%, transparent 65%);
   animation: ink-pulse 7s ease-in-out infinite;
 }
 
 .dark .ink-bg__glow {
   background:
-    radial-gradient(60% 45% at 50% 0%, rgba(196, 18, 30, 0.42) 0%, rgba(120, 8, 14, 0.18) 38%, transparent 70%),
-    radial-gradient(40% 30% at 82% 12%, rgba(196, 18, 30, 0.16) 0%, transparent 60%);
+    radial-gradient(60% 45% at 50% 0%, rgba(56, 189, 248, 0.32) 0%, rgba(14, 116, 168, 0.16) 38%, transparent 70%),
+    radial-gradient(40% 30% at 82% 12%, rgba(34, 211, 238, 0.14) 0%, transparent 60%);
   mix-blend-mode: screen;
 }
 
@@ -469,7 +469,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   background-image: none;
 }
 
-/* vignette: soft on paper, heavy black crush at night */
+/* vignette: soft on paper, deep-water navy at night */
 .ink-bg__vignette {
   position: absolute;
   inset: 0;
@@ -477,7 +477,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .dark .ink-bg__vignette {
-  background: radial-gradient(120% 100% at 50% 35%, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+  background: radial-gradient(120% 100% at 50% 35%, transparent 50%, rgba(1, 10, 24, 0.6) 100%);
 }
 
 /* faint film grain to kill the flat digital look */
@@ -507,4 +507,43 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   .ink-bg__grain {
     animation: none;
   }
+}
+
+/* ascii sharks: full-viewport ocean blended over the ink background.
+   The canvas and scrim are separate fixed layers (not one wrapper) so the
+   blend mode reaches .ink-bg instead of an isolated stacking context. */
+.ascii-ocean {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* light: invert the black ocean to white (hue-rotate keeps the colours),
+   then multiply so the white drops out and the paper shows through */
+canvas.ascii-ocean {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+/* dark: screen drops the black ocean out; low opacity keeps sharks faint */
+.dark canvas.ascii-ocean {
+  filter: none;
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+/* fade the centre column so text stays readable over swimming sharks */
+.ascii-ocean__scrim {
+  background: radial-gradient(ellipse 42rem 120% at 50% 50%, hsl(var(--background) / 0.5) 0%, hsl(var(--background) / 0.2) 60%, transparent 100%);
+}
+
+.dark .ascii-ocean__scrim {
+  background: radial-gradient(ellipse 42rem 120% at 50% 50%, rgba(3, 21, 38, 0.5) 0%, rgba(3, 21, 38, 0.2) 60%, transparent 100%);
 }

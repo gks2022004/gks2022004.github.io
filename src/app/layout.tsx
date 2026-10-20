@@ -1,3 +1,4 @@
+import AsciiOcean from "@/components/ascii-ocean";
 import DotsBackground from "@/components/dots-background";
 import Navbar from "@/components/navbar";
 import ScrollProgress from "@/components/scroll-progress";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
             <DotsBackground />
+            <AsciiOcean />
             <ScrollProgress />
             <div className="relative z-10">
               {children}

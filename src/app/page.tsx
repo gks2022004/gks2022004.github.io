@@ -10,7 +10,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -23,7 +22,7 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="font-serif text-4xl tracking-tight sm:text-6xl xl:text-7xl/none cursor-default transition-all duration-500 hover:[text-shadow:0_0_28px_rgba(196,18,30,0.55)]"
+                className="font-serif text-4xl tracking-tight sm:text-6xl xl:text-7xl/none cursor-default transition-all duration-500 hover:[text-shadow:0_0_28px_rgba(14,165,233,0.55)]"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} `}
               />
@@ -40,7 +39,7 @@ export default function Page() {
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border overflow-hidden transition-all duration-500 hover:border-[hsl(353_70%_45%)] hover:shadow-[0_0_34px_rgba(196,18,30,0.55)]">
+              <Avatar className="size-28 border overflow-hidden transition-all duration-500 hover:border-[hsl(199_89%_45%)] hover:shadow-[0_0_34px_rgba(14,165,233,0.55)]">
                 <AvatarImage
                   alt={DATA.name}
                   src={DATA.avatarUrl}
@@ -51,17 +50,6 @@ export default function Page() {
             </BlurFade>
           </div>
         </div>
-      </section>
-
-      <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="font-serif text-2xl tracking-tight">About</h2>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
-        </BlurFade>
       </section>
 
       <section id="work">
@@ -103,7 +91,7 @@ export default function Page() {
               >
                 <Badge
                   key={skill}
-                  className="transition-colors duration-300 hover:bg-[hsl(353_70%_45%)] hover:text-white"
+                  className="transition-colors duration-300 hover:bg-[hsl(199_89%_45%)] hover:text-white"
                 >
                   {skill}
                 </Badge>
